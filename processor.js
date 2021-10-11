@@ -3,9 +3,10 @@ function processor(transmission) {
     return -1;
   };
   const parts = transmission.split('::');
+  const rawData = parts[1];
   return {
     id:  Number(parts[0]),
-    rawData: parts[1]
+    rawData: rawData
   };
 }
 
