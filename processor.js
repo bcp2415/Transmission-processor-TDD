@@ -3,7 +3,18 @@ function processor(transmission) {
     return -1;
   };
   const parts = transmission.split('::');
-  const rawData = parts[1];
+  let rawData = parts[1];
+  if (rawData[0] !== '<') {
+    rawData = -1;
+  };
+  const last = rawData.length - 1;
+  if (rawData[last] !== '>') {
+    rawData = -1;
+  };
+  // next 3 lines don't work; examine behavior of indexOf, how it interacts with above conditions setting rawData = -1:
+  if (rawData.indexOf('>') !== rawData[last]) {
+    rawData = -1;
+  };
   return {
     id:  Number(parts[0]),
     rawData: rawData

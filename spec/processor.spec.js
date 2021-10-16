@@ -26,5 +26,20 @@ describe("transmission processor", function() {
   it("returns raw data in object", function() {
     const result = processor('9701::<489584872710>');
     expect(result.rawData).not.toEqual(undefined);
+  });
+
+  it("returns -1 for rawData if missing < at position 0", function() {
+    const result = processor('9701::489584872710>');
+    expect(result.rawData).toEqual(-1);
+  });
+
+  it("returns -1 for rawData if missing > at last position", function() {
+    const result = processor('9701::<8729740349572>0912');
+    expect(result.rawData).toEqual(-1);
+  });
+
+  it("returns -1 for rawData if > is present but in wrong position", function() {
+    const result = processor('9701::<8729740349572>0912>');
+    expect(result.rawData).toEqual(-1);
   })
 });
