@@ -41,5 +41,10 @@ describe("transmission processor", function() {
   it("returns -1 for rawData if > is present but in wrong position", function() {
     const result = processor('9701::<8729740349572>0912>');
     expect(result.rawData).toEqual(-1);
-  })
+  });
+
+  it("returns -1 for rawData if < is present but in wrong position", function() {
+    const result = processor("9701::<4872<97403495720912>");
+    expect(result.rawData).toEqual(-1);
+  });
 });

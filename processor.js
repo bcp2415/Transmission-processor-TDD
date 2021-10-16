@@ -7,12 +7,12 @@ function processor(transmission) {
   if (rawData[0] !== '<') {
     rawData = -1;
   };
-  const last = rawData.length - 1;
+  const last = (rawData.length - 1);
   if (rawData[last] !== '>') {
     rawData = -1;
   };
   if (rawData !== -1) {
-    if (rawData.indexOf('>') !== rawData[last]) {
+    if (rawData.indexOf('>') !== last) {
       rawData = -1;
     };
   };
