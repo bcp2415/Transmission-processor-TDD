@@ -78,4 +78,10 @@ describe("transmission processor", function() {
     expect(result.id).toEqual(-1);
     expect(result.rawData).toEqual(-1);
   });
+
+  it("returns rawData without < and > at ends of string", function() {
+    const result = processor('9701::<487297403495720912>');
+    expect(result.rawData.indexOf('<')).toEqual(-1);
+    expect(result.rawData.indexOf('>')).toEqual(-1);
+  })
 });
