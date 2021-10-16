@@ -83,5 +83,10 @@ describe("transmission processor", function() {
     const result = processor('9701::<487297403495720912>');
     expect(result.rawData.indexOf('<')).toEqual(-1);
     expect(result.rawData.indexOf('>')).toEqual(-1);
-  })
+  });
+
+  it("returns -1 for rawData if anything other than numbers is present between the < and >", function() {
+    const result = processor('9701::<4872974034c95720912>');
+    expect(result.rawData).toEqual(-1);
+  });
 });
