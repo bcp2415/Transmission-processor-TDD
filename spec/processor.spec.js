@@ -67,4 +67,9 @@ describe("transmission processor", function() {
     const result = processor(" 9701::<487297403495720912> ");
     expect(result.rawData).toEqual('<487297403495720912>');
   });
+
+  it("returns -1 for id if id part of transmission cannot be converted to a number", function() {
+    const result = processor("cat1::<487297403495<720912>");
+    expect(result.id).toEqual(-1);
+  });
 });
