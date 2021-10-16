@@ -11,9 +11,10 @@ function processor(transmission) {
   if (rawData[last] !== '>') {
     rawData = -1;
   };
-  // next 3 lines don't work; examine behavior of indexOf, how it interacts with above conditions setting rawData = -1:
-  if (rawData.indexOf('>') !== rawData[last]) {
-    rawData = -1;
+  if (rawData !== -1) {
+    if (rawData.indexOf('>') !== rawData[last]) {
+      rawData = -1;
+    };
   };
   return {
     id:  Number(parts[0]),
