@@ -72,4 +72,10 @@ describe("transmission processor", function() {
     const result = processor("cat1::<487297403495<720912>");
     expect(result.id).toEqual(-1);
   });
+
+  it("returns -1 for both parts if more than one '::' is found in the transmission", function() {
+    const result = processor('9701::<48729740349572::0912>');
+    expect(result.id).toEqual(-1);
+    expect(result.rawData).toEqual(-1);
+  });
 });
