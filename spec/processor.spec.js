@@ -65,7 +65,7 @@ describe("transmission processor", function() {
 
   it("trims leading and trailing whitespace from data", function() {
     const result = processor(" 9701::<487297403495720912> ");
-    expect(result.rawData).toEqual('<487297403495720912>');
+    expect(result.rawData).toEqual('487297403495720912');
   });
 
   it("returns -1 for id if id part of transmission cannot be converted to a number", function() {

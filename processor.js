@@ -31,7 +31,9 @@ function processor(transmission) {
       rawData = -1;
     };
   };
-  
+  if (rawData !== -1) {
+    rawData = rawData.slice(1, -1);
+  };
   return {
     id:  Number(parts[0]),
     rawData: rawData
