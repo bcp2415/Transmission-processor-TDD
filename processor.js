@@ -1,3 +1,7 @@
+function isNumber(input) {
+  return !Number.isNaN(parseFloat(input)) && isFinite(input);
+}
+
 function processor(transmission) {
   transmission = transmission.trim();
   if (transmission.indexOf("::") < 0) {
@@ -33,6 +37,11 @@ function processor(transmission) {
   };
   if (rawData !== -1) {
     rawData = rawData.slice(1, -1);
+    for (character of rawData) {
+      if (!isNumber(character)) {
+        rawData = -1;
+      };
+    };
   };
   return {
     id:  Number(parts[0]),
