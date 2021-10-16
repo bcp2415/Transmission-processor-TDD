@@ -47,4 +47,24 @@ describe("transmission processor", function() {
     const result = processor("9701::<4872<97403495720912>");
     expect(result.rawData).toEqual(-1);
   });
+
+  it("returns -1 for rawData if both ends are missing <>, but > present in middle of string", function() {
+    const result = processor("9701::8729740349572>0912");
+    expect(result.rawData).toEqual(-1);
+  });
+
+  it ("returns -1 for rawData if both ends are missing <> but < present in middle of string", function() {
+    const result = processor("9701::4872<97403495720912");
+    expect(result.rawData).toEqual(-1);
+  });
+
+  it("returns -1 for rawData if there are no <> anywhere in string", function() {
+    const result = processor("9701::487297403495720912");
+    expect(result.rawData).toEqual(-1);
+  });
+
+  it("trims leading and trailing whitespace from data", function() {
+    const result = processor(" 9701::<487297403495720912> ");
+    expect(result.rawData).toEqual('<487297403495720912>');
+  });
 });

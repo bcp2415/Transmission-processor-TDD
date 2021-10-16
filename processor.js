@@ -26,5 +26,5 @@ function processor(transmission) {
     rawData: rawData
   };
 }
-
+console.log(processor(" 9701::<487297403495720912> "));
 module.exports = processor;
