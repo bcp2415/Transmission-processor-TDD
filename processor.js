@@ -4,6 +4,12 @@ function processor(transmission) {
     return -1;
   };
   const parts = transmission.split('::');
+  if (parts.length > 2) {
+    return {
+      id: -1,
+      rawData: -1,
+    };
+  };
   if (isNaN(parts[0])) {
     parts[0] = -1;
   };
