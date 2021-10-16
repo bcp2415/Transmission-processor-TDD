@@ -1,4 +1,5 @@
 function processor(transmission) {
+  transmission = transmission.trim();
   if (transmission.indexOf("::") < 0) {
     return -1;
   };
@@ -26,5 +27,5 @@ function processor(transmission) {
     rawData: rawData
   };
 }
-console.log(processor(" 9701::<487297403495720912> "));
+
 module.exports = processor;
